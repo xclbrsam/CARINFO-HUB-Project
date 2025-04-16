@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Scrolling</title>
+    <style>
+        /* Add some styles for the sections */
+        section {
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#section1">Section 1</a>
+        <a href="#section2">Section 2</a>
+        <a href="#section3">Section 3</a>
+    </nav>
+    
+    <section id="section1" style="background-color: lightblue;">
+        <h1>Section 1</h1>
+    </section>
+    <section id="section2" style="background-color: lightgreen;">
+        <h1>Section 2</h1>
+    </section>
+    <section id="section3" style="background-color: lightcoral;">
+        <h1>Section 3</h1>
+    </section>
+
+    <script>
+        // Smooth scrolling implementation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default anchor click behavior
+
+                const targetElement = document.querySelector(this.getAttribute('href'));
+
+                targetElement.scrollIntoView({
+                    behavior: 'smooth', // Smooth scrolling
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
